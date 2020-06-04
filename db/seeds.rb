@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Hospital.delete_all
 [
   { name: 'RS ABC' },
   { name: 'RS DEF' },
@@ -14,6 +16,7 @@
   Hospital.find_or_initialize_by(name: attributes[:name]).update!(attributes)
 end
 
+Doctor.delete_all
 [
   { name: 'Dr Doe' },
   { name: 'Dr John' },
@@ -40,4 +43,16 @@ end
   { doctor: Doctor.find_by(name: 'Dr Anon'), hospital: Hospital.find_by(name: 'RS ABC') }
 ].each do |attributes|
   HospitalDoctor.find_or_create_by!(attributes)
+end
+
+DoctorSchedule.delete_all
+[
+  { doctor: Doctor.find_by(name: 'Dr Doe'), from: Time.now + 3600, until: Time.now + 3600 * 2 },
+  { doctor: Doctor.find_by(name: 'Dr John'), from: Time.now + 3600 * 2, until: Time.now + 3600 * 4 },
+  { doctor: Doctor.find_by(name: 'Dr Foo'), from: Time.now + 3600, until: Time.now + 3600 * 2 },
+  { doctor: Doctor.find_by(name: 'Dr Bar'), from: Time.now + 3600 * 3, until: Time.now + 3600 * 5 },
+  { doctor: Doctor.find_by(name: 'Dr Anon'), from: Time.now + 3600, until: Time.now + 3600 * 2 },
+  { doctor: Doctor.find_by(name: 'Dr Y'), from: Time.now + 3600 * 2, until: Time.now + 3600 * 4 },
+].each do |attributes|
+  DoctorSchedule.find_or_create_by!(attributes)
 end

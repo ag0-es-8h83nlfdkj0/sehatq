@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_061306) do
+ActiveRecord::Schema.define(version: 2020_06_04_075608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "doctor_schedules", force: :cascade do |t|
+    t.bigint "doctor_id"
+    t.datetime "from", null: false
+    t.datetime "until", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id", "from", "until"], name: "index_doctor_schedules_on_doctor_id_and_from_and_until", unique: true
+    t.index ["doctor_id"], name: "index_doctor_schedules_on_doctor_id"
+  end
 
   create_table "doctors", force: :cascade do |t|
     t.string "name", null: false

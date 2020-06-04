@@ -6,6 +6,12 @@ List of doctors
   <%= doctor.name %>
   <br />
   Hospitals : <%= doctor.hospitals.pluck(:name).join(', ') %>
+  <br />
+  Available at : 
+  <br />
+  <% doctor.schedules.each do |schedule| %>
+    - <%= formatted_schedule(schedule) %>
+  <% end %>
   </li>
 <% end %>
 </ul>
