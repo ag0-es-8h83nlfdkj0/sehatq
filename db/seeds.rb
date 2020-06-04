@@ -35,7 +35,9 @@ end
   { doctor: Doctor.find_by(name: 'Dr Anon'), hospital: Hospital.find_by(name: 'RS GHI') },
   { doctor: Doctor.find_by(name: 'Dr Nobody'), hospital: Hospital.find_by(name: 'RS GHI') },
   { doctor: Doctor.find_by(name: 'Dr X'), hospital: Hospital.find_by(name: 'RS JKL') },
-  { doctor: Doctor.find_by(name: 'Dr Y'), hospital: Hospital.find_by(name: 'RS JKL') }
+  { doctor: Doctor.find_by(name: 'Dr Y'), hospital: Hospital.find_by(name: 'RS JKL') },
+  { doctor: Doctor.find_by(name: 'Dr John'), hospital: Hospital.find_by(name: 'RS DEF') },
+  { doctor: Doctor.find_by(name: 'Dr Anon'), hospital: Hospital.find_by(name: 'RS ABC') }
 ].each do |attributes|
   HospitalDoctor.find_or_create_by!(attributes)
 end
