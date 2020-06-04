@@ -4,7 +4,7 @@ Appointments :
 <ul>
   <% doctor.appointments.each do |appointment| %>
   <li>
-    <%= appointment.user.email %> - <%= formatted_schedule(appointment.schedule) %>
+    <%= appointment.user.name %> - <%= formatted_schedule(appointment.schedule) %>
   </li>
   <% end %>
 </ul>
