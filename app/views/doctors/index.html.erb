@@ -10,7 +10,8 @@ List of doctors
   Available at : 
   <br />
   <% doctor.schedules.each do |schedule| %>
-    - <%= formatted_schedule(schedule) %>
+    - <%= formatted_schedule(schedule) %> <%= link_to "Make an appointment", appointments_path(user_id: current_user.id, schedule_id: schedule.id), method: :post %>
+
   <% end %>
   </li>
 <% end %>
