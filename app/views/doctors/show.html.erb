@@ -1,0 +1,10 @@
+Doctor : <%= doctor.name %>
+
+Appointments :
+<ul>
+  <% doctor.appointments.each do |appointment| %>
+  <li>
+    <%= appointment.user.email %> - <%= formatted_schedule(appointment.schedule) %>
+  </li>
+  <% end %>
+</ul>

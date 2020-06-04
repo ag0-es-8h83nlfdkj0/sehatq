@@ -3,7 +3,7 @@ List of doctors
 <ul>
 <% doctors.each do |doctor| %>
   <li>
-  <%= doctor.name %>
+  <%= link_to(doctor.name, doctor_path(id: doctor.id)) %>
   <br />
   Hospitals : <%= doctor.hospitals.pluck(:name).join(', ') %>
   <br />

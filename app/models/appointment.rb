@@ -6,6 +6,8 @@ class Appointment < ApplicationRecord
 
   alias_attribute :schedule_id, :doctor_schedule_id
 
+  scope :active, -> { joins(:schedule).where('doctor_schedules.from >= ?', Time.now) }
+
   validates :schedule, uniqueness: { scope: :user }
   validate :quota_per_schedule
 
