@@ -34,6 +34,7 @@ group :development, :test do
   gem 'pry', '~> 0.12.2'
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -59,3 +60,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # devise and omniauth
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'

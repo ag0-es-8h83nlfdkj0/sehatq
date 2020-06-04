@@ -3,6 +3,7 @@ module Users
     before_action :find_or_register
 
     def facebook; end
+    def google_oauth2; end
 
     private
 
