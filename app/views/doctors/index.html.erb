@@ -1,1 +1,11 @@
 List of doctors
+
+<ul>
+<% doctors.each do |doctor| %>
+  <li>
+  <%= doctor.name %>
+  <br />
+  Hospitals : <%= doctor.hospitals.pluck(:name).join(', ') %>
+  </li>
+<% end %>
+</ul>
