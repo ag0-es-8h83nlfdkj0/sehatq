@@ -11,6 +11,30 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-light navbar-expand navigation-clean">
+        <div class="container"><%= link_to('SEHATQ Test', root_path, class: 'navbar-brand') %>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation">
+                      <% if current_user %>
+                        
+                        <%= link_to("Login as : #{current_user.name} | Logout", destroy_user_session_path, class: 'nav-link', method: :delete) %>
+                      <% else %>
+                        <%= link_to('Masuk / Daftar', new_user_session_path, class: 'nav-link') %>
+                      <% end %>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <% if flash[:message] %>
+      <div class="alert alert-success text-center" role="alert"><%= flash[:message] %></div>
+    <% end %>
+
+    <% if flash[:error] %>
+      <div class="alert alert-danger text-center" role="alert"><%= flash[:error] %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

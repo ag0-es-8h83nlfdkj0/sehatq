@@ -1,3 +1,4 @@
+<!--
 Doctor : <%= doctor.name %>
 
 Appointments :
@@ -8,3 +9,49 @@ Appointments :
   </li>
   <% end %>
 </ul>
+-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4><%= doctor.name %></h4><small><%= doctor.hospitals.pluck(:name).join(', ') %></small>
+            <div class="table-responsive">
+                <% if doctor.schedules.present? %>
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th>Schedule</th>
+                              <th></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <% doctor.schedules.each do |schedule| %>
+                          <tr>
+                              <td><%= formatted_schedule(schedule) %></td>
+                              <td>
+                                <%= link_to('Make an appointment', appointments_path(user_id: current_user.id, schedule_id: schedule.id), class: 'btn btn-primary text-white', method: :post) %>
+
+                                <%= link_to('Check patients', schedule_path(id: schedule.id), class: 'btn btn-info text-white') %>
+                              </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                  </table>
+                <% else %>
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th>Schedule</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                            <td>No schedules yet</td>
+                        </tr>
+                      </tbody>
+                  </table>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

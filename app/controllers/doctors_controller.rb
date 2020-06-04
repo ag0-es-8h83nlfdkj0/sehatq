@@ -4,7 +4,7 @@ class DoctorsController < ApplicationController
   include TimeHelper
 
   def index
-    doctors = Doctor.includes(:hospitals, :schedules).all
+    doctors = Doctor.includes(:hospitals).all
     render locals: { doctors: doctors } 
   end
 

@@ -1,18 +1,11 @@
-List of doctors
-
-<ul>
-<% doctors.each do |doctor| %>
-  <li>
-  <%= link_to(doctor.name, doctor_path(id: doctor.id)) %>
-  <br />
-  Hospitals : <%= doctor.hospitals.pluck(:name).join(', ') %>
-  <br />
-  Available at : 
-  <br />
-  <% doctor.schedules.each do |schedule| %>
-    - <%= formatted_schedule(schedule) %> <%= link_to "Make an appointment", appointments_path(user_id: current_user.id, schedule_id: schedule.id), method: :post %>
-
-  <% end %>
-  </li>
-<% end %>
-</ul>
+<div class="container">
+    <div class="row">
+      <% doctors.each do |doctor| %>
+        <div class="col-md-3">
+          <h5><%= link_to(doctor.name, doctor_path(id: doctor.id)) %></h5>
+          <small><%= doctor.hospitals.pluck(:name).join(', ') %></small>
+          <%= link_to('Check schedule', doctor_path(id: doctor.id), class: 'btn btn-primary btn-block text-white') %>
+        </div>
+      <% end %>
+    </div>
+</div>

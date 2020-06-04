@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4><%= schedule.doctor.name %></h4><small><%= schedule.doctor.hospitals.pluck(:name).join(', ') %></small>
+            <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th>Patients for <%= formatted_schedule(schedule) %></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <% if appointments.present? %>
+                          <% appointments.each do |appointment| %>
+                            <tr>
+                                <td><%= appointment.user.name %></td>
+                            </tr>
+                          <% end %>
+                        <% else %>
+                            <tr>
+                                <td>No patient yet</td>
+                            </tr>
+                        <% end %>
+                      </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>

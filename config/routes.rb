@@ -4,4 +4,7 @@ Rails.application.routes.draw do
 
   resources :doctors, only: %i[index show]
   resources :appointments, only: %i[create]
+  resources :schedules, only: %i[show]
+
+  root 'doctors#index'
 end
