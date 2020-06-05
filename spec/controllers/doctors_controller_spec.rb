@@ -51,5 +51,14 @@ RSpec.describe DoctorsController, :type => :request do
         expect(response.body).not_to include('No doctors available')
       end
     end
+
+    context 'unauthenticated access' do
+        it 'redirected to sign_in' do
+          sign_out user
+          get(doctors_path)
+          expect(response).to have_http_status(302)
+          expect(response).to redirect_to(new_user_session_path)
+        end
+    end
   end
 end

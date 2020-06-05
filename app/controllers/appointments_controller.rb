@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     permitted = params.permit(:user_id, :schedule_id)
     appointment = Appointment.create(permitted)
