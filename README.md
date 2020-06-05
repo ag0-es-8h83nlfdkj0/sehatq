@@ -11,7 +11,7 @@ $ git clone https://github.com/ag0-es-8h83nlfdkj0/sehatq.git
 $ cd ./sehatq
 $ gem install pg -v '1.2.3'
 $ bundle install
-$ rake db:create && rails db:migrate
+$ rake db:create && rails db:migrate && rails db:seed
 $ rails s
 ```
 
@@ -24,3 +24,6 @@ $ cd ./sehatq
 $ rails db:migrate RAILS_ENV=test
 $ rspec spec
 ```
+
+#### RSpec know issues
+Some tests might produce errors "ActionView::Template::Error: Webpacker can't find application in ..." because of webpacker in test env. If this error occurred, run `RAILS_ENV=test bundle exec rails webpacker:compile` before run rspec.

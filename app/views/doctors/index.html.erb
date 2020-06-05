@@ -1,11 +1,15 @@
 <div class="container">
     <div class="row">
-      <% doctors.each do |doctor| %>
-        <div class="col-md-3">
-          <h5><%= link_to(doctor.name, doctor_path(id: doctor.id)) %></h5>
-          <small><%= doctor.hospitals.pluck(:name).join(', ') %></small>
-          <%= link_to('Check schedule', doctor_path(id: doctor.id), class: 'btn btn-primary btn-block text-white') %>
-        </div>
+      <% if doctors.present? %>
+        <% doctors.each do |doctor| %>
+          <div class="col-md-3">
+            <h5><%= link_to(doctor.name, doctor_path(id: doctor.id)) %></h5>
+            <small><%= doctor.hospitals.pluck(:name).join(', ') %></small>
+            <%= link_to('Check schedule', doctor_path(id: doctor.id), class: 'btn btn-primary btn-block text-white') %>
+          </div>
+        <% end %>
+      <% else %>
+          No doctors available
       <% end %>
     </div>
 </div>
