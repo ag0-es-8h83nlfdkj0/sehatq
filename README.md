@@ -15,15 +15,19 @@ $ rake db:create && rails db:migrate && rails db:seed
 $ rails s
 ```
 
+Notes : 
+`db:seed` will reset the doctor schedule
+
+
 ### Configuration
 Check at .env
 
 ### RSpec
 ```shell
 $ cd ./sehatq
-$ rails db:migrate RAILS_ENV=test
+$ rails db:migrate RAILS_ENV=test # once
 $ rspec spec
 ```
 
-#### RSpec know issues
+##### Known issues
 Some tests might produce errors "ActionView::Template::Error: Webpacker can't find application in ..." because of webpacker in test env. If this error occurred, run `RAILS_ENV=test bundle exec rails webpacker:compile` before run rspec.
